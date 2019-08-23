@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         post "playlists", to:"playlists#create"
         get "playlists", to:"playlists#index"
       end
-      resources :playlists, only: [:index, :show, :create] do
+      resources :playlists, only: [:show] do
         post "songs", to:"songs#create"
         get "songs", to:"songs#index"
       end
