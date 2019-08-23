@@ -7,9 +7,9 @@ module Api
       end
 
       def create
-        @playlist = Playlist.new(user_id: params[:id])
-        @playlist.save!
-        render json: @playlist
+        @user = Playlist.find(params[:id])
+        @user_playlist = @user.playlists.build()
+        render json: @user_playlist
       end
 
       def show

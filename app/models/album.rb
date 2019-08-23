@@ -3,4 +3,8 @@ class Album < ApplicationRecord
   has_many :songs
 
   validates :name, presence: true
+
+  def length_seconds
+    self.songs.reduce(0) { |length, song| length + song.length_seconds } #change album to self to reference album that method is called on
+  end
 end
