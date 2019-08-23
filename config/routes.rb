@@ -8,7 +8,15 @@ Rails.application.routes.draw do
         resources :albums, only: [:index]
       end
       resources :songs, only: [:index, :show]
-      resources :users, only: [:index, :show, :create]
+      resources :users, only: [:index, :show, :create] do
+        post "playlists", to:"playlists#create"
+        get "playlists", to:"playlists#index"
+      end
+      resources :playlists, only: [:index, :show, :create] do
+        post "songs", to:"songs#create"
+        get "songs", to:"songs#index"
+      end
+      
     end
   end
 end
